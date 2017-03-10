@@ -1,0 +1,47 @@
+{
+  "name": "api-api/structure-twitter",
+  "description": "Structure implementation for Twitter.",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "keywords": [
+    "api-api",
+    "structure",
+    "structure-twitter"
+  ],
+  "homepage": "http://awesome.ug",
+  "authors": [
+    {
+      "name": "Felix Arntz",
+      "email": "felix-arntz@leaves-and-love.net",
+      "homepage": "https://leaves-and-love.net",
+      "role": "Lead Developer"
+    },
+    {
+      "name": "Sven Wagener",
+      "email": "sven@awesome.ug",
+      "homepage": "http://awesome.ug",
+      "role": "Head of Development"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/api-api/structure-twitter/issues"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "autoload": {
+    "psr-4": {
+      "APIAPI\\Structure_Twitter\\": "src/Structure_Twitter/"
+    },
+    "files": [
+      "src/structure-twitter.php"
+    ]
+  },
+  "require": {
+    "api-api/core": "*",
+    "api-api/authenticator-oauth1": "*"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "dev-master"
+  }
+}
