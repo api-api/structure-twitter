@@ -40,8 +40,5 @@
   "require": {
     "api-api/core": "*",
     "api-api/authenticator-oauth1": "*"
-  },
-  "require-dev": {
-    "codeclimate/php-test-reporter": "dev-master"
   }
 }
