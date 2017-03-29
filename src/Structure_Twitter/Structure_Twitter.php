@@ -29,8 +29,9 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 		 * @access protected
 		 */
 		protected function setup() {
-			$this->title    = 'Twitter API';
-			$this->base_uri = 'https://api.twitter.com/1.1';
+			$this->title       = 'Twitter API';
+			$this->description = 'Provides programmatic access to read and write Twitter data.';
+			$this->base_uri    = 'https://api.twitter.com/1.1';
 
 			$this->authenticator = 'twitter-oauth1';
 			$this->authentication_data_defaults = array(
