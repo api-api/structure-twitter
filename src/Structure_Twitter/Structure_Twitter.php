@@ -2,13 +2,14 @@
 /**
  * Structure_Twitter class
  *
- * @package APIAPIStructureDummyName
+ * @package APIAPI\Structure_Twitter
  * @since 1.0.0
  */
 
 namespace APIAPI\Structure_Twitter;
 
 use APIAPI\Core\Structures\Structure;
+use APIAPI\Core\Request\Method;
 
 if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
@@ -26,14 +27,13 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 		 * class and default authentication data.
 		 *
 		 * @since 1.0.0
-		 * @access protected
 		 */
 		protected function setup() {
 			$this->title       = 'Twitter API';
 			$this->description = 'Provides programmatic access to read and write Twitter data.';
 			$this->base_uri    = 'https://api.twitter.com/1.1';
 
-			$this->authenticator = 'twitter-oauth1';
+			$this->authenticator                = 'twitter-oauth1';
 			$this->authentication_data_defaults = array(
 				'request'   => 'https://api.twitter.com/oauth/request_token',
 				'authorize' => 'https://api.twitter.com/oauth/authorize',
@@ -42,7 +42,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/remove_profile_banner.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Removes the uploaded profile banner for the authenticating user. Returns HTTP 200 upon success.',
 						'needs_authentication' => true,
 						'params'               => array(),
@@ -52,12 +52,12 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/settings.json'] = array(
 				'methods' => array(
-					'GET'  => array(
+					Method::GET  => array(
 						'description'          => 'Returns settings (including current trend, geo and sleep time information) for the authenticating user.',
 						'needs_authentication' => true,
 						'params'               => array(),
 					),
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Updates the authenticating user’s settings.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -97,7 +97,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/update_profile.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Sets some values that users are able to set under the “Account” tab of their settings page. Only the parameters specified will be updated.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -138,7 +138,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/update_profile_background_image.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Updates the authenticating user’s profile background image. This method can also be used to enable or disable the profile background image.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -172,7 +172,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/update_profile_banner.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Uploads a profile banner on behalf of the authenticating user.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -204,7 +204,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/update_profile_image.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Updates the authenticating user’s profile image.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -230,7 +230,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/account/verify_credentials.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns an HTTP 200 OK response code and a representation of the requesting user if authentication was successful; returns a 401 status code and an error message if not. Use this method to test if supplied user credentials are valid.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -256,7 +256,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/application/rate_limit_status.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns the current rate limits for methods belonging to the specified resource families.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -271,7 +271,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/blocks/create.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Blocks the specified user from following the authenticating user.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -300,7 +300,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/blocks/destroy.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Un-blocks the user specified in the ID parameter for the authenticating user.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -329,7 +329,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/blocks/ids.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns an array of numeric user ids the authenticating user is blocking.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -349,7 +349,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/blocks/list.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of user objects that the authenticating user is blocking.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -376,7 +376,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/search/tweets.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of relevant Tweets matching a specified query.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -439,7 +439,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 					),
 				),
 				'methods'        => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Destroys the status specified by the required ID parameter. Returns the destroyed status if successful.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -455,7 +455,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/home_timeline.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of the most recent Tweets and retweets posted by the authenticating user and the users they follow.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -496,7 +496,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/lookup.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns fully-hydrated Tweet objects for up to 100 Tweets per request, as specified by comma-separated values passed to the id parameter.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -527,7 +527,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/mentions_timeline.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns the 20 most recent mentions (Tweets containing a users’s @screen_name) for the authenticating user.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -568,7 +568,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 					),
 				),
 				'methods'        => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Retweets a tweet. Returns the original tweet with retweet details embedded.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -584,7 +584,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/retweeters/ids.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of up to 100 user IDs belonging to users who have retweeted the Tweet specified by the id parameter.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -614,7 +614,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 					),
 				),
 				'methods'        => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of the 100 most recent retweets of the Tweet specified by the id parameter.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -637,7 +637,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/retweets_of_me.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns the most recent Tweets authored by the authenticating user that have been retweeted by others.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -683,7 +683,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 					),
 				),
 				'methods'        => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a single Tweet, specified by the id parameter.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -714,7 +714,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 					),
 				),
 				'methods'        => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Untweets a retweeted status. Returns the original Tweet with retweet details embedded.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -730,7 +730,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/update.json'] = array(
 				'methods' => array(
-					'POST' => array(
+					Method::POST => array(
 						'description'          => 'Updates the authenticating user’s current status, also known as Tweeting.',
 						'needs_authentication' => true,
 						'params'               => array(
@@ -785,7 +785,7 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Structure_Twitter' ) ) {
 
 			$this->routes['/statuses/user_timeline.json'] = array(
 				'methods' => array(
-					'GET' => array(
+					Method::GET => array(
 						'description'          => 'Returns a collection of the most recent Tweets and retweets posted by the authenticating user and the users they follow.',
 						'needs_authentication' => true,
 						'params'               => array(

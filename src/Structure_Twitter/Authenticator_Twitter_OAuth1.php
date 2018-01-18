@@ -24,13 +24,12 @@ if ( ! class_exists( 'APIAPI\Structure_Twitter\Authenticator_Twitter_OAuth1' ) )
 		 * Returns protocol parameters.
 		 *
 		 * @since 1.0.0
-		 * @access protected
 		 *
 		 * @param string $consumer_key      The consumer key for the API.
 		 * @param array  $additional_params Additional protocol parameters to merge.
 		 * @return array Array of protocol parameters.
 		 */
-		protected function get_protocol_params( $consumer_key, $additional_params = array() ) {
+		protected function get_protocol_params( $consumer_key, array $additional_params = array() ) {
 			$protocol_params = parent::get_protocol_params( $consumer_key, $additional_params );
 
 			/* Twitter does not want this as it can be set in their app configuration. */
